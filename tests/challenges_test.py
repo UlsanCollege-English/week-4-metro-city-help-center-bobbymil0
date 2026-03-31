@@ -3,6 +3,9 @@ Tests for Metro City Help Center — Weekly Coding #4
 """
 
 import pytest
+
+pytestmark = pytest.mark.task(taskno=1)
+
 from src.challenges import (
     ActionStack,
     RequestQueue,
