@@ -1,17 +1,21 @@
-name: tests
+name: Run tests
+
 on: [push, pull_request]
 
 jobs:
-  pytest:
+  test:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
       - name: Install pytest
-        run: |
-          python -m pip install --upgrade pip
-          pip install pytest
+        run: pip install pytest
+
       - name: Run tests
-        run: pytest -q
+        run: pytest tests/ -v
