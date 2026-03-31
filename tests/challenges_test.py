@@ -2,6 +2,8 @@
 Tests for Metro City Help Center — Weekly Coding #4
 """
 
+import unittest
+
 import pytest
 
 pytestmark = pytest.mark.task(taskno=1)
@@ -17,7 +19,7 @@ from src.challenges import (
 
 # ── ActionStack ───────────────────────────────────────────────
 
-class TestActionStack:
+class TestActionStack(unittest.TestCase):
 
     def test_push_and_pop_normal(self):
         stack = ActionStack()
@@ -65,7 +67,7 @@ class TestActionStack:
 
 # ── RequestQueue ──────────────────────────────────────────────
 
-class TestRequestQueue:
+class TestRequestQueue(unittest.TestCase):
 
     def test_enqueue_and_dequeue_normal(self):
         queue = RequestQueue()
@@ -112,7 +114,7 @@ class TestRequestQueue:
 
 # ── is_note_balanced ──────────────────────────────────────────
 
-class TestIsNoteBalanced:
+class TestIsNoteBalanced(unittest.TestCase):
 
     def test_parentheses_balanced(self):
         assert is_note_balanced("Call back (urgent)") is True
@@ -144,7 +146,7 @@ class TestIsNoteBalanced:
 
 # ── process_request_line ──────────────────────────────────────
 
-class TestProcessRequestLine:
+class TestProcessRequestLine(unittest.TestCase):
 
     def test_normal_order_preserved(self):
         result = process_request_line(["Mina", "Jay", "Omar"])
@@ -159,7 +161,7 @@ class TestProcessRequestLine:
 
 # ── undo_recent_actions (stretch) ─────────────────────────────
 
-class TestUndoRecentActions:
+class TestUndoRecentActions(unittest.TestCase):
 
     def test_undo_two(self):
         result = undo_recent_actions(["open ticket", "assign worker", "close ticket"], 2)
