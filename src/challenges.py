@@ -1,5 +1,7 @@
 ﻿"""Weekly Coding #4: Metro City Help Center stacks and queues."""
 
+from __future__ import annotations
+
 from collections import deque
 
 BRACKET_MATCH = {")": "(", "]": "[", "}": "{"}
