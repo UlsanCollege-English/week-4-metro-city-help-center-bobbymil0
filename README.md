@@ -1,38 +1,35 @@
-# Weekly Coding #4 — Metro City Help Center
+﻿# Weekly Coding #4 - Metro City Help Center
 
 ## Summary
-
-This project builds small parts of a support system for Metro City Help Center. Staff actions are tracked with a stack so the most recent can be undone first, and waiting citizens are managed with a queue so they are served in arrival order. The assignment focuses on choosing the right data structure — stack (LIFO) or queue (FIFO) — for each real-world need.
-
----
+This project implements two core data structures for a help center workflow: a stack for undoable staff actions (LIFO) and a queue for citizen requests (FIFO). It also includes bracket validation for notes and a queue-based request-line processor.
 
 ## Complexity
 
-| Function / Method | Time Complexity | Reason |
+| Function / Method | Time | Reason |
 |---|---|---|
-| `ActionStack.pop` | O(1) | `list.pop()` from the end is constant time |
-| `RequestQueue.dequeue` | O(1) | `deque.popleft()` is constant time; this is why `deque` is used instead of a plain list |
-| `is_note_balanced` | O(n) | Each character in the note is visited exactly once |
-| `process_request_line` | O(n) | Each citizen is enqueued and dequeued exactly once |
+| `ActionStack.pop` | `O(1)` | Removes from the end of a Python list |
+| `RequestQueue.dequeue` | `O(1)` | `deque.popleft()` is constant time |
+| `is_note_balanced` | `O(n)` | Scans each character once with stack operations |
+| `process_request_line` | `O(n)` | Each citizen is dequeued exactly once |
 
----
+## Edge-case Checklist
 
-## Edge-case checklist
-
-| Case | How the code handles it |
+| Case | Behavior |
 |---|---|
-| Empty action stack — `pop` | Returns `None` immediately via `is_empty()` check |
-| Empty action stack — `peek` | Returns `None` immediately via `is_empty()` check |
-| Empty request queue — `dequeue` | Returns `None` immediately via `is_empty()` check |
-| Empty request queue — `peek` | Returns `None` immediately via `is_empty()` check |
-| Empty string for `is_note_balanced` | The loop never runs; the stack stays empty; returns `True` |
-| Note with no brackets | Non-bracket characters are ignored; returns `True` |
-| Empty citizen list for `process_request_line` | Caught by `if not citizens` guard; returns `[]` immediately |
+| Empty action stack (`pop`) | Returns `None` |
+| Empty action stack (`peek`) | Returns `None` |
+| Empty request queue (`dequeue`) | Returns `None` |
+| Empty request queue (`peek`) | Returns `None` |
+| Empty string in `is_note_balanced` | Returns `True` |
+| Note with no brackets | Returns `True` |
+| Empty citizen list in `process_request_line` | Returns `[]` |
 
----
+## Assistance and Sources
+- AI used: Yes
+- How AI was used: Helped refine wording, test organization, and readability
+- Outside sources: Python documentation for `collections.deque`
 
-## Assistance & sources
-
-- **AI used:** Yes
-- **What it helped with:** Structuring the docstrings and README table formatting
-- **Outside sources:** Python docs for `collections.deque` — https://docs.python.org/3/library/collections.html#collections.deques
+## Run Tests
+```bash
+python -m pytest -q
+```
